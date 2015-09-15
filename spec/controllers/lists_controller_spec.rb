@@ -2,7 +2,6 @@ require 'rails_helper'
 require_relative 'shared_examples/lists'
 
 RSpec.describe ListsController, type: :controller do
-
   let(:author)            { FactoryGirl.create(:user) }
   let(:collaborator)      { FactoryGirl.create(:user) }
   let(:random_guy)        { FactoryGirl.create(:user) }

@@ -11,7 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150915010935) do
+ActiveRecord::Schema.define(version: 20150915013939) do
+
+  create_table "lists", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "author_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "lists", ["author_id"], name: "index_lists_on_author_id"
+
+  create_table "permissions", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "list_id"
+    t.string  "action"
+  end
+
+  add_index "permissions", ["list_id"], name: "index_permissions_on_list_id"
+  add_index "permissions", ["user_id"], name: "index_permissions_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"

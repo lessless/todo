@@ -1,5 +1,4 @@
 class ListPolicy
-
   def initialize(user, list)
     @author       = list.created_by?(user)
     @permissions  = Permission.allowed_actions(user, list)

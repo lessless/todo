@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.describe ListPolicy do
   subject { described_class }
 
-  let (:author)       { FactoryGirl.create(:user)                 }
-  let (:random_guy)   { FactoryGirl.create(:user)                 }
-  let (:list )        { FactoryGirl.create(:list, author: author) }
+  let (:author)       { FactoryGirl.build_stubbed(:user)                 }
+  let (:random_guy)   { FactoryGirl.build_stubbed(:user)                 }
+  let (:list )        { FactoryGirl.build_stubbed(:list, author: author) }
 
   permissions :show? do
     it "allow author to read list" do
@@ -17,7 +17,7 @@ RSpec.describe ListPolicy do
     end
 
     it "allow collaborator to read the list" do
-      collaborator = FactoryGirl.create(:user)
+      collaborator = FactoryGirl.build_stubbed(:user)
       Lists::AddCollaborator.new(list).execute!(collaborator, Permission::LIST_READ_ACTION)
       expect(subject).to permit(collaborator, list)
     end
@@ -33,7 +33,7 @@ RSpec.describe ListPolicy do
     end
 
     it "allow collaborator to read the list" do
-      collaborator = FactoryGirl.create(:user)
+      collaborator = FactoryGirl.build_stubbed(:user)
       Lists::AddCollaborator.new(list).execute!(collaborator, Permission::LIST_DELETE_ACTION)
       expect(subject).to permit(collaborator, list)
     end

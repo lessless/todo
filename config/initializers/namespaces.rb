@@ -1,2 +1,1 @@
-module Services
-end
+module Services; end

@@ -31,6 +31,7 @@ shared_examples_for 'authorized user' do
       end
     end
   end
+
   describe "DELETE #destroy" do
     it "destroys the requested item" do
       item = Item.create! valid_attributes

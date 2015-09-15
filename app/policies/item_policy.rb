@@ -9,7 +9,7 @@ class ItemPolicy
     @author || @permissions.include?(Permission::ITEM_CREATE_ACTION)
   end
 
-  def delete?
+  def destroy?
     @author || @permissions.include?(Permission::ITEM_DELETE_ACTION)
   end
 end

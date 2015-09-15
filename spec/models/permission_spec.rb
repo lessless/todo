@@ -10,7 +10,6 @@ RSpec.describe Permission, type: :model do
     permission = Permission.create!(user: collaborator, list: list, action: action)
 
     expect(permission_exists?(list, collaborator, action)).to be_truthy
-
     expect{Permission.create!(user: collaborator, list: list, action: action)}.to  raise_error(ActiveRecord::RecordInvalid)
   end
 

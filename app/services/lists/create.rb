@@ -5,7 +5,8 @@ module Lists
     end
 
     def execute!(params)
-      List.create!(author: @user)
+      attributes = params.merge({author: @user})
+      List.create!(attributes)
     end
   end
 end

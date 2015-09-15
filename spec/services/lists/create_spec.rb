@@ -6,8 +6,13 @@ RSpec.describe Lists::Create do
   let (:permission)   { FactoryGirl.attributes_for(:permission) }
   let (:service)      { Lists::Create.new(user)                 }
 
-  it "assign author on creation" do
-    list = service.execute!(list_params)
-    expect(list.author.id). to eq(user.id)
+  before(:each) { @list = service.execute!(list_params) }
+
+  it 'assign author on creation' do
+    expect(@list.author.id).to eq(user.id)
+  end
+
+  it "correctly sets attirbutes" do
+    expect(@list.name).to eq(list_params[:name])
   end
 end

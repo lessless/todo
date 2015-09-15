@@ -4,7 +4,7 @@ class List < ActiveRecord::Base
   has_many :permissions
   has_many :items
 
-  validates_presence_of :author_id
+  validates_presence_of :name, :author_id
 
   def created_by?(user)
     author_id == user.id

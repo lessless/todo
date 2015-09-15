@@ -24,15 +24,15 @@ RSpec.describe ListPolicy do
   end
 
   permissions :destroy? do
-    it "allow author to read list" do
+    it "allow author to destroy list" do
        expect(subject).to permit(author, list)
     end
 
-    it "doesn't allow random guy to read list" do
+    it "doesn't allow random guy to destroy list" do
        expect(subject).not_to permit(random_guy, list)
     end
 
-    it "allow collaborator to read the list" do
+    it "allow collaborator to destroy list" do
       collaborator = FactoryGirl.build_stubbed(:user)
       Lists::AddCollaborator.new(list).execute!(collaborator, Permission::LIST_DELETE_ACTION)
       expect(subject).to permit(collaborator, list)

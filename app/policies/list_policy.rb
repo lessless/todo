@@ -8,7 +8,7 @@ class ListPolicy
     @author || @permissions.include?(Permission::LIST_READ_ACTION)
   end
 
-  def delete?
+  def destroy?
     @author || @permissions.include?(Permission::LIST_DELETE_ACTION)
   end
 end

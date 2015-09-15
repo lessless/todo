@@ -23,7 +23,7 @@ RSpec.describe ListPolicy do
     end
   end
 
-  permissions :delete? do
+  permissions :destroy? do
     it "allow author to read list" do
        expect(subject).to permit(author, list)
     end
